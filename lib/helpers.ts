@@ -1,3 +1,5 @@
+'use client'
+
 import { useCallback, useState } from "react";
 
 type Translate = { x: number; y: number };

@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
-import Tree from "react-d3-tree";
+
+import dynamic from "next/dynamic";
 import { useCenteredTree } from "../lib/helpers";
+const Tree = dynamic(() => import("react-d3-tree"), { ssr: false });
 
 const orgChart = {
   name: "CEO",
@@ -43,17 +45,14 @@ const orgChart = {
 export const TreeContainer = () => {
   const [dimensions, translate, containerRef] = useCenteredTree();
   return (
-    <div
-      id="22323"
-      className="w-[700px] h-[900px] border-solid border-2 border-sky-500"
-      ref={containerRef}
-    >
+    <div id="22323" className="w-[700px] h-[900px] " ref={containerRef}>
       <Tree
         data={orgChart}
         translate={translate}
+        dimensions={dimensions}
         draggable={true}
         zoomable={true}
-        orientation="vertical"
+        orientation="horizontal"
       />
     </div>
   );
