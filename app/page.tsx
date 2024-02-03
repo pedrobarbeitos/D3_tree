@@ -3,7 +3,7 @@ import { TreeContainer } from "@/components/TreeContainer";
 
 export default function Home() {
   return (
-    <main>
+    <main className="w-full h-full flex grow">
       <TreeContainer />
     </main>
   );
