@@ -19,7 +19,7 @@ export const TreeContainer = () => {
         dimensions={dimensions}
         draggable={true}
         zoomable={true}
-        orientation="horizontal"
+        orientation="vertical"
       />
     </div>
   );
