@@ -7,6 +7,7 @@ import { data } from "../lib/data";
 import { TreeOrientationButton } from "./TreeOrientationButton";
 import { NodePathButton } from "./NodePathButton";
 import { SearchTreeInput } from "./SearchTreeInput";
+import { Folder, File } from "lucide-react";
 const Tree = dynamic(() => import("react-d3-tree"), { ssr: false });
 
 interface NodeDatum {
@@ -28,7 +29,12 @@ const renderForeignObjectNode = ({
   foreignObjectProps: ForeignObjectProps;
 }) => (
   <foreignObject {...foreignObjectProps}>
-    <div className="bg-popover w-[250px]  h-[75px] rounded-lg">
+    <div className="flex flex-col justify-center items-center bg-popover w-[250px] h-[75px] rounded-lg text-sm">
+      {nodeDatum.type === "folder" ? (
+        <Folder strokeWidth={1} />
+      ) : (
+        <File strokeWidth={1} />
+      )}
       {nodeDatum.name}
     </div>
   </foreignObject>
@@ -46,7 +52,7 @@ export const TreeContainer = () => {
         <TreeOrientationButton /> <NodePathButton /> <SearchTreeInput />
       </div>
       <div
-        className="w-full border-solid border-primary border-[1px] flex grow-[2] rounded-lg"
+        className="w-full border-solid border-muted border-[1px] flex grow-[2] rounded-lg"
         ref={containerRef}
       >
         <Tree
@@ -57,6 +63,7 @@ export const TreeContainer = () => {
           draggable={true}
           zoomable={true}
           orientation="vertical"
+          pathClassFunc={() => "!stroke-muted stroke-[1px]"}
           nodeSize={nodeSize}
           renderCustomNodeElement={(rd3tProps) =>
             renderForeignObjectNode({ ...rd3tProps, foreignObjectProps })
