@@ -22,7 +22,7 @@ export const data = {
             children: [
               {
                 type: "file",
-                name: "file name",
+                name: "render.tsx",
               },
             ],
           },
