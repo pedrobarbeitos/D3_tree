@@ -18,7 +18,7 @@ export const data = {
           },
           {
             type: "folder",
-            name: "folder name",
+            name: "getprops.tsx",
             children: [
               {
                 type: "file",
