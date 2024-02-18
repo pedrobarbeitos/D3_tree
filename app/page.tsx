@@ -1,7 +1,10 @@
 import Image from "next/image";
+import { TreeContainer } from "@/components/TreeContainer";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center "> main</main>
+    <main className="w-full h-full flex grow">
+      <TreeContainer />
+    </main>
   );
 }
